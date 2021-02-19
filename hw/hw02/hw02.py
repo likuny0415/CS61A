@@ -37,6 +37,11 @@ def product(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    i, res = 1, 1
+    while i <= n:
+        res *= term(i)
+        i += 1
+    return res
 
 def factorial(n):
     """Return n factorial for n >= 0 by calling product.
@@ -50,6 +55,7 @@ def factorial(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    return product(n, identity)
 
 def accumulate(combiner, base, n, term):
     """Return the result of combining the first n terms in a sequence and base.
@@ -70,6 +76,12 @@ def accumulate(combiner, base, n, term):
     19
     """
     "*** YOUR CODE HERE ***"
+    i = 1
+    while i <= n:
+        base = combiner(term(i), base)
+        i += 1
+    return base
+
 
 def summation_using_accumulate(n, term):
     """Returns the sum of term(1) + ... + term(n). The implementation
@@ -85,6 +97,7 @@ def summation_using_accumulate(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    return accumulate(add, 0, n, term)
 
 def product_using_accumulate(n, term):
     """An implementation of product using accumulate.
@@ -99,6 +112,7 @@ def product_using_accumulate(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    return accumulate(mul, 1, n, term)
 
 def compose1(f, g):
     """Return a function h, such that h(x) = f(g(x))."""
@@ -118,10 +132,17 @@ def make_repeater(f, n):
     625
     >>> make_repeater(square, 4)(5) # square(square(square(square(5))))
     152587890625
-    >>> make_repeater(square, 0)(5) # Yes, it makes sense to apply the function zero times! 
+    >>> make_repeater(square, 0)(5) # Yes, it makes sense to apply the function zero times!
     5
     """
     "*** YOUR CODE HERE ***"
+    def repeat(x):
+        i = 1
+        while i <= n:
+            x = f(x)
+            i += 1
+        return x
+    return repeat
 
 def num_sevens(n):
     """Returns the number of times 7 appears as a digit of n.
@@ -143,7 +164,13 @@ def num_sevens(n):
     ...       ['Assign', 'AugAssign'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    "*** YOUR CODE HERE "
+    if n == 0:
+        return 0
+    elif n % 10 == 7:
+        return 1 + num_sevens(n // 10)
+    else:
+        return num_sevens(n // 10)
 
 def pingpong(n):
     """Return the nth element of the ping-pong sequence.
@@ -177,6 +204,47 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    def is_seven(n):
+        if n % 10 == 7:
+            return True
+        elif n == 0:
+            return False
+        else:
+            return is_seven(n // 10)
+
+    def ping_helper(cur_val, position, direction):
+        if n == position:
+            return cur_val + direction
+        else:
+            if is_seven(position) or position % 7 == 0:
+                return ping_helper(cur_val + direction, position + 1, -direction)
+            else:
+                return ping_helper(cur_val + direction, position + 1, direction)
+    return ping_helper(0, 1, 1)
+
+"Iterative Version of PingPong"
+# def is_seven(n):
+#     if n % 10 == 7:
+#         return True
+#     elif n == 0:
+#         return False
+#     else:
+#         return is_seven(n // 10)
+#
+# def ping_iterative(n):
+#     direction = 1;
+#     position = 1;
+#     cur_val = 0
+#
+#     while position <= n:
+#         cur_val += direction
+#         if is_seven(position) or position % 7 == 0:
+#             direction = -direction
+#             position += 1
+#         else:
+#             position += 1
+#     return cur_val
+
 
 def count_change(amount):
     """Return the number of ways to make change for amount.
@@ -194,6 +262,23 @@ def count_change(amount):
     True
     """
     "*** YOUR CODE HERE ***"
+    def count_partition(n ,m):
+        if m == 0:
+            return 0
+        elif n == 0:
+            return 1
+        elif n < 0:
+            return 0
+        return count_partition(n - m, m) + count_partition(n, m // 2)
+
+    def find_largest(n, base):
+        if base > n:
+            return base // 2
+        else:
+            return find_largest(n, base * 2)
+
+    num = find_largest(amount, 1)
+    return count_partition(amount, num)
 
 
 
@@ -246,4 +331,4 @@ def make_anonymous_factorial():
     >>> check(HW_SOURCE_FILE, 'make_anonymous_factorial', ['Assign', 'AugAssign', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
+    return ""
