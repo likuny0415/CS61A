@@ -21,19 +21,19 @@ any(a1) - >True
 
 ![Tree](/images/Tree.png)
 
-```
+`
 # Constructor
 def tree(label, branches=[]):
-	for branch in branches:
-		assert is_tree(branch)
-	return [label] + list[branches]
+for branch in branches:
+	assert is_tree(branch)
+return [label] + list[branches]
 
 # Selectors
 def label(tree):
-	return tree[0]
+return tree[0]
 
 def branches(tree):
-	# a = [1,2,3], a[1:] = [2,3]
-	return tree[1:]
+# a = [1,2,3], a[1:] = [2,3]
+return tree[1:]
 
-```
+`
