@@ -21,7 +21,7 @@ any(a1) - >True
 
 ![Tree](/images/Tree.png)
 
-`
+```
 # Constructor
 def tree(label, branches=[]):
 for branch in branches:
@@ -36,4 +36,4 @@ def branches(tree):
 # a = [1,2,3], a[1:] = [2,3]
 return tree[1:]
 
-`
+```
