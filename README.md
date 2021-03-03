@@ -4,8 +4,8 @@
 
 ### Sequence Aggregation
 
-1.any(iterable) -> bool
-2.all(iterable) -> bool
+- any(iterable) -> bool
+- all(iterable) -> bool
 
 a = [1,2,3]<br>
 a1 = [0,1,2,3]
@@ -20,3 +20,20 @@ any(a1) - >True
 ### Tree Abstraction
 
 ![Tree](/images/Tree.png)
+
+```
+# Constructor
+def tree(label, branches=[]):
+	for branch in branches:
+		assert is_tree(branch)
+	return [label] + list[branches]
+
+# Selectors
+def label(tree):
+	return tree[0]
+
+def branches(tree):
+	# a = [1,2,3], a[1:] = [2,3]
+	return tree[1:]
+
+```
