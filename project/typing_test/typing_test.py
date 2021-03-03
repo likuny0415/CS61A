@@ -6,6 +6,7 @@ import simplejson as json
 
 # BEGIN Q1-5
 "*** YOUR CODE HERE ***"
+#Q1
 def lines_from_file(path):
     """
     Open txt and turn it into Stream
@@ -17,6 +18,7 @@ def lines_from_file(path):
     content = readlines(file)
     return [strip(x) for x in content]
 
+
 def new_sample(path, i):
     """
     Return String from the list
@@ -24,6 +26,7 @@ def new_sample(path, i):
     assert i >= 0
     return lines_from_file(path)[i]
 
+#Q2
 def analyze(samp, typed, start, end):
 
     def w_per_m(samp, typed, start, end):
@@ -65,35 +68,38 @@ def analyze(samp, typed, start, end):
     return [w_per_m(samp, typed, start, end), 
     accuracy(samp, typed)]
 
+
 # Q3
+def pig_latin(word):
 
-# def pig_latin(word):
+    # First letter
+    def is_vowel(s):
+        if s == 'a' or s == 'e' or s =='i' or s == 'o' or s == 'u':
+            return True
+        else:
+            return False
 
-#     # First letter
-#     def is_vowel(s):
-#         if s == 'a' or s == 'e' or s =='i' or s == 'o' or s == 'u':
-#             return True
-#         else:
-#             return False
+    # First letter
+    def is_consonant(s):
+        return not is_vowel(s)
 
-#     # First letter
-#     def is_consonant(s):
-#         return not is_vowel(s)
-
-#     # Check if contain vowel
-#     def contain_vowel(s):
-#         return 'a' in s or 'e' in s or 'i' in s or 'o' in s or 'u' in s
+    # Check if contain vowel
+    def contain_vowel(s):
+        return 'a' in s or 'e' in s or 'i' in s or 'o' in s or 'u' in s
 
 
-#     if is_vowel(word[0]):
-#         return word + 'way'
-#     elif contain_vowel(word):
-#         for i in range(len(word)):
-#             if is_vowel(word[i]):
-#                 return word[i:] + word[:i] + 'ay'
-#     else:
-#         return word + 'ay'
+    if is_vowel(word[0]):
+        return word + 'way'
+    elif contain_vowel(word):
+        for i in range(len(word)):
+            if is_vowel(word[i]):
+                return word[i:] + word[:i] + 'ay'
+    else:
+        return word + 'ay'
 
+#Q4 Phase 3
+def autocorrect(user_input):
+    
 
 
 
