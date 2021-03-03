@@ -11,14 +11,14 @@ a = [1,2,3]<br>
 a1 = [0,1,2,3]
 
 
->>>all(a)
->>>True
+>all(a)
+>True
 
->>>all(a1)
->>>False
+>all(a1)
+>False
 
->>>any(a1)
->>>True
+>any(a1)
+>True
 
 
 ### Tree Abstraction
