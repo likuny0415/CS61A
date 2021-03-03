@@ -4,22 +4,18 @@
 
 ### Sequence Aggregation
 
-· any(iterable) -> bool
-· all(iterable) -> bool
+1.any(iterable) -> bool
+2.all(iterable) -> bool
 
 a = [1,2,3]<br>
 a1 = [0,1,2,3]
 
 
-all(a)<br>
-True
+all(a) -> True   
 
-all(a1)<br>
-False
+all(a1) -> False   
 
-any(a1)<br>
-True
-
+any(a1) - >True   
 
 ### Tree Abstraction
 
