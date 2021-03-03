@@ -7,7 +7,7 @@
 · any(iterable) -> bool
 · all(iterable) -> bool
 
-a = [1,2,3]
+a = [1,2,3]<br>
 a1 = [0,1,2,3]
 
 
