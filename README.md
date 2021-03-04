@@ -31,7 +31,7 @@ any(a1) - >True
 
 ![Tree Processing](images/TreeProcess.png)
 
-*code in class* tree.py
+**code in class** tree.py
 
 
 
